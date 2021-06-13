@@ -3,14 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Graph;
-use App\Models\Node;
-use App\Models\Edge;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class GraphSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
@@ -18,7 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         Graph::factory()
             ->count(50)
-            ->hasNodes(20)
             ->create();
     }
 }
