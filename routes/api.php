@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GraphController;
+use App\Http\Controllers\GraphNodeController;
+use App\Http\Controllers\GraphEdgeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('graphs', GraphController::class);
+Route::apiResource('graphs.nodes', GraphNodeController::class);
+Route::apiResource('graphs.edges', GraphEdgeController::class);
+

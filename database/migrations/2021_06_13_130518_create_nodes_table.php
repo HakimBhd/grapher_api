@@ -19,7 +19,9 @@ class CreateNodesTable extends Migration
             $table->timestamps();
 
             // relationships
-            $table->foreignId('graph_id')->constrained();
+            $table->foreignId('graph_id')->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

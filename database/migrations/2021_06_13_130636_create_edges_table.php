@@ -14,16 +14,25 @@ class CreateEdgesTable extends Migration
     public function up()
     {
         Schema::create('edges', function (Blueprint $table) {
-            $table->id();           
+            $table->id();
 
             $table->unsignedBigInteger('parent_id');
             $table->unsignedBigInteger('child_id');
 
             $table->timestamps();
-            
+
             // relationships
-            $table->foreign('parent_id')->references('id')->on('nodes');
-            $table->foreign('child_id')->references('id')->on('nodes'); 
+            $table->foreign('parent_id')->references('id')->on('nodes')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('child_id')->references('id')->on('nodes')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            
+            $table->foreignId('graph_id')->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

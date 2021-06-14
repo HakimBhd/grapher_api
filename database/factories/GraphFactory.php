@@ -22,7 +22,7 @@ class GraphFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->lastName()->unique(),
+            'name' => $this->faker->unique()->lastName(),
             'description' => $this->faker->text()
         ];
     }
